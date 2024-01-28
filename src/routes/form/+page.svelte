@@ -111,7 +111,7 @@
   {#if out_of_questions}
     <div class="form-end">
       <h2>Thanks for filling out this form!</h2>
-      <img src="https://media1.tenor.com/m/hEOM8E4epvgAAAAC/hahaha-thats-all-folks.gif" alt="That's all folks!"/>
+      <button on:click={() => {location.reload()}}>Restart?</button>
     </div>
   {:else}
     <form on:submit={newQuestion}>
@@ -172,8 +172,30 @@
   }
   .form-end {
     text-align: center;
-    img {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      background: black;
+      border: 1px solid black;
+      color: white;
+      padding: 1em;
       border-radius: 8px;
+      font-family: inherit;
+
+      &:hover:not(:disabled) {
+        background: transparent;
+        color: black;
+        cursor: pointer;
+      }
+      &:disabled {
+        opacity: 0.5;
+      }
+    }
+    h2 {
+      margin-bottom: 1rem;
     }
   }
 </style>
