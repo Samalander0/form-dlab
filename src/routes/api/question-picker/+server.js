@@ -39,13 +39,22 @@ function prompt(original_question, question_answer, question_option_a, question_
     text = text + ` Question A: "${question_option_a}". Question A would be best to ask when  ${question_option_a_when}`
   }
   if (question_option_b) {
-    text = text + ` Question B: "${question_option_b}. Question A would be best to ask when  ${question_option_b_when}"`
+    if (question_option_b == "NO_QUESTION") {
+      text = text + " Question NO: I could also not ask a follow up question if the other option doesn't work. If this is what I should do, respond with NO"
+    } else {
+      text = text + ` Question B: "${question_option_b}. Question A would be best to ask when  ${question_option_b_when}"`
+    }
   }
   if (question_option_c) {
-    text = text + ` Question C: "${question_option_c}. Question A would be best to ask when  ${question_option_c_when}"`
+    if (question_option_c == "NO_QUESTION") {
+      text = text + " Question NO: I could also not ask a follow up question if the other option doesn't work. If this is what I should do, respond with NO"
+    } else {
+      text = text + ` Question C: "${question_option_c}. Question A would be best to ask when  ${question_option_c_when}"`
+    }
   }
 
   text = text + " Please respond with only the letter of the question you would choose. Question letter:"
+  console.log(text)
   
   const parts = [
     {text}
